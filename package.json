@@ -1,0 +1,36 @@
+{
+  "name": "moneylog",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "Alan Christian",
+    "email": "alanchristiancreator@hotmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "fix": "echo 123"
+  },
+  "husky": {
+    "hooks": {
+       "pre-commit": "echo ”[Husky] pre-commit”"
+    }
+ },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "./src/**/*.{js,md,json}": [
+      "yarn fix"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2"
+  }
+}
