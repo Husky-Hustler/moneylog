@@ -10,13 +10,17 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "fix": "echo 123"
+    "fix": "run-s \"fix:* {@}\" --",
+    "fix:lint": "eslint --fix --no-error-on-unmatched-pattern",
+    "fix:format": "prettier --write",
+    "format": "yarn fix:format 'src/**/*.(js|ts|md|json)",
+    "lint": "yarn fix:lint src/**/*.{js,ts,md,json}"
   },
   "husky": {
     "hooks": {
-       "pre-commit": "echo ”[Husky] pre-commit”"
+      "pre-commit": "echo ”[Husky] pre-commit”"
     }
- },
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -31,6 +35,7 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "husky": "^7.0.2",
-    "lint-staged": "^11.1.2"
+    "lint-staged": "^11.1.2",
+    "npm-run-all": "^4.1.5"
   }
 }
