@@ -1,3 +1,1 @@
-const x = a => a + 10
-
-x(1)
+console.log('Hello Word')
