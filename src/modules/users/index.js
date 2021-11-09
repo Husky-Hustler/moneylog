@@ -1,16 +1,19 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
+
 import { prisma } from '~/data'
 
 export const login = async ctx => {
   try {
     const { email, password } = ctx.request.body
 
-    const [user] = await prisma.user.findMany({
-      where: { email, password },
+    const user = await prisma.user.findUnique({
+      where: { email },
     })
 
-    if (!user) {
+    const passwordEqual = await bcrypt.compare(password, user.password)
+
+    if (!user || !passwordEqual) {
       ctx.status = 404
       return
     }
