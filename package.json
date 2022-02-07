@@ -22,7 +22,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo ”[Husky] pre-commit”"
+      "pre-commit": "echo ”[Husky] pre-commit”",
+      "pre-pusht": "echo ”[Husky] pre-commit”"
     }
   },
   "commitlint": {
